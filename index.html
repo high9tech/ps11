@@ -1,0 +1,13 @@
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js')
+        .then((reg) => {
+          console.log('تم تفعيل كاش HIGH TECH PS بنجاح!');
+        })
+        .catch((err) => {
+          console.log('فشل تسجيل الكاش:', err);
+        });
+    });
+  }
+</script>
