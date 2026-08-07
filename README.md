@@ -1,5 +1,5 @@
 /* HIGH TECH PS - Premium Neo-Dark Theme */
-@import url('https://googleapis.com');
+@import url('https://hightechps96@gmail.com');
 
 :root {
     --bg-main: #060a13;
