@@ -1,4 +1,6 @@
+إليك الكود المحدث بالكامل بعد إزالة خيارات **GOLD HEN** و **PSFree**، وإضافة **زر واحد في المنتصف** يحمل الاسم **HIGH TECH PS** وتحته كلمة **jailbreak**:
 
+```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl" manifest="cache.manifest">
 <head>
@@ -6,14 +8,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HIGH TECH PS - المنصة الاحترافية الفاخرة</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* تنسيقات الزر الرئيسي الجديد في منتصف الصفحة */
+        .main-jailbreak-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 40px 0;
+        }
+        
+        .btn-jailbreak-main {
+            background: linear-gradient(135deg, #00f0ff 0%, #7000ff 100%);
+            border: 2px solid #00f0ff;
+            border-radius: 20px;
+            padding: 30px 60px;
+            color: #ffffff;
+            cursor: pointer;
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.4);
+            transition: all 0.3s ease-in-out;
+            text-align: center;
+            min-width: 320px;
+            outline: none;
+        }
+
+        .btn-jailbreak-main:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 0 50px rgba(0, 240, 255, 0.8), 0 0 20px rgba(112, 0, 255, 0.6);
+            border-color: #ffffff;
+        }
+
+        .btn-jailbreak-main .title-text {
+            display: block;
+            font-size: 2rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+        }
+
+        .btn-jailbreak-main .sub-text {
+            display: block;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ffe600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+        }
+    </style>
 </head>
 <body>
 
     <!-- شاشة الاختراق وحقن الذاكرة اللحظي -->
     <div id="loader" class="overlay-loader">
         <div class="spinner-ring"></div>
-        <h2 id="loader-title" style="color: var(--border-glow); font-weight: 900;">جاري تحميل محرك النظام...</h2>
-        <p style="color: var(--text-muted);" id="loader-sub">يرجى الانتظار، يتم الآن معالجة ثغرة كيرنيل الذاكرة المباشرة.</p>
+        <h2 id="loader-title" style="color: var(--border-glow, #00f0ff); font-weight: 900;">جاري تحميل محرك النظام...</h2>
+        <p style="color: var(--text-muted, #ccc);" id="loader-sub">يرجى الانتظار، يتم الآن معالجة ثغرة كيرنيل الذاكرة المباشرة.</p>
     </div>
 
     <header>
@@ -23,31 +73,12 @@
 
     <div class="container">
 
-        <!-- اللوحة الرئيسية للتفعيلات السريعة (زرين احترافيين) -->
-        <div class="exploit-grid-main">
-            
-            <!-- الصندوق الأول: جولد هين التقليدي المستقر -->
-            <div class="action-card goldhen-box">
-                <h3>تفعيل نظام GOLD HEN</h3>
-                <div class="badge">الإصدار المحدث v2.4b18.10</div>
-                <p style="color: var(--text-muted); margin-bottom: 25px; font-size: 0.95rem;">لتمرير وحقن حمولات نظام ألعاب الـ PS4 المستقرة والمحفوظة.</p>
-                <button class="btn-exploit btn-gh-style" onclick="triggerGoldHen()">
-                    <span class="arrow">⬅</span>
-                    <span>GOLD HEN</span>
-                </button>
-            </div>
-
-            <!-- الصندوق الثاني: محرك PSFree الأحدث بدون فلاشة -->
-            <div class="action-card psfree-box">
-                <h3>تفعيل ت ثغرة PSFree</h3>
-                <div class="badge">تعديل مباشر 100% (بدون فلاشة USB)</div>
-                <p style="color: var(--text-muted); margin-bottom: 25px; font-size: 0.95rem;">تخطي حماية المتصفح عبر WebKit Exploit فوري فائق السرعة لنسخ الـ PS4 والـ PS5.</p>
-                <button class="btn-exploit btn-psf-style" onclick="triggerPSFree()">
-                    <span class="arrow">⬅</span>
-                    <span>PSFree Launch</span>
-                </button>
-            </div>
-
+        <!-- زر الجيلبريك الرئيسي الوحيد في المنتصف -->
+        <div class="main-jailbreak-container">
+            <button class="btn-jailbreak-main" onclick="triggerJailbreak()">
+                <span class="title-text">HIGH TECH PS</span>
+                <span class="sub-text">jailbreak</span>
+            </button>
         </div>
 
         <!-- شبكة السوفت وير التفصيلية -->
@@ -102,35 +133,21 @@
         const title = document.getElementById('loader-title');
         const sub = document.getElementById('loader-sub');
 
-        function triggerGoldHen() {
+        // دالة تشغيل الجيلبريك الرئيسي عند الضغط على الزر في المنتصف
+        function triggerJailbreak() {
             loader.style.display = 'flex';
-            title.innerText = "جاري تحضير ثغرة المتصفح...";
-            sub.innerText = "يرجى الانتظار لتجهيز مستودع ذاكرة الميموري للـ Payloads.";
+            title.style.color = '#00f0ff';
+            title.innerText = "جاري تفعيل HIGH TECH PS Jailbreak...";
+            sub.innerText = "يتم الآن معالجة ثغرة كيرنيل الذاكرة المباشرة والتفعيل التلقائي.";
             
             setTimeout(() => {
-                title.innerText = "تم اختراق ثغرة الويب! جاري إرسال نظام GoldHEN v2.4 المحدث...";
+                title.innerText = "نجاح استغلال الثغرة (Kernel Exploit Success)...";
+                sub.innerText = "تم حقن النظام بنجاح وتفعيل بيئة التعديل.";
                 setTimeout(() => {
                     loader.style.display = 'none';
-                    alert("تم تفعيل بيئة الألعاب ومستند جولد هين بنجاح!");
+                    alert("تهانينا! تم تفعيل HIGH TECH PS Jailbreak بنجاح.");
                 }, 2000);
             }, 1500);
-        }
-
-        // دالة تشغيل نظام PSFree بدون فلاشة الحقيقي التفاعلي
-        function triggerPSFree() {
-            loader.style.display = 'flex';
-            title.style.color = '#9d4edd';
-            title.innerText = "جاري تفعيل محرك PSFree (بدون فلاشة)...";
-            sub.innerText = "يتم الآن عمل Heap Spraying لتخطي كود حماية متصفح الكونسول تلقائياً.";
-            
-            setTimeout(() => {
-                title.innerText = "نجاح الاستغلال (Triggering Kernel Exploit)...";
-                sub.innerText = "تم كسر حماية النظام الداخلي وحقن الخصائص بنجاح تام بدون أدوات خارجية.";
-                setTimeout(() => {
-                    loader.style.display = 'none';
-                    alert("تهانينا! تم تفعيل ثغرة الويب كيت المباشرة عبر محرك PSFree بنجاح مستقر.");
-                }, 2500);
-            }, 2000);
         }
 
         function triggerFirmware(version, consoleType) {
@@ -147,5 +164,8 @@
     </script>
 </body>
 </html>
+
+```<img width="1408" height="768" alt="High Resolution Logo" src="https://github.com/user-attachments/assets/25e5c806-1cec-4617-9c5f-d0a5fe5b8952" />
+<img width="1408" height="768" alt="High Resolution Logo" src="https://github.com/user-attachments/assets/f4e6f6a8-34e8-400d-a8b6-aa2caa98f165" />
 
 # 🎮 HIGH TECH PS - PlayStation Exploit
