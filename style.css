@@ -1,0 +1,223 @@
+/* HIGH TECH PS - Ultra Premium Gaming Interface */
+@import url('https://googleapis.com');
+
+:root {
+    --bg-overlay: rgba(5, 9, 20, 0.88); /* فلتر داكن لإبراز النصوص فوق صورة الألعاب */
+    --card-bg: rgba(18, 26, 47, 0.85); /* كروت شفافة زجاجية Glassmorphism */
+    --border-glow: #00f0ff;
+    --ps-blue: #0070d1;
+    --psfree-purple: #9d4edd; /* لون نيون مميز لمحرك PSFree */
+    --gold-accent: #ffd700;
+    --text-white: #ffffff;
+    --text-muted: #a3b3cc;
+    --success: #00ff66;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Cairo', sans-serif;
+    user-select: none;
+}
+
+body {
+    /* كود جلب خلفية ألعاب مجمعة حديثة عالية الجودة مع دمج الفلتر الداكن الاحترافي */
+    background: linear-gradient(var(--bg-overlay), var(--bg-overlay)), 
+                url('https://unsplash.com') no-repeat center center fixed;
+    background-size: cover;
+    color: var(--text-white);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+    padding: 20px;
+}
+
+/* الهيدر المتوهج */
+header {
+    width: 100%;
+    max-width: 1100px;
+    text-align: center;
+    padding: 30px 20px;
+    backdrop-filter: blur(5px);
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    margin-bottom: 20px;
+}
+
+.logo {
+    font-size: 3.2rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px var(--ps-blue), 0 0 30px var(--border-glow);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: var(--gold-accent);
+    font-weight: 700;
+    margin-top: 5px;
+    text-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
+}
+
+.container {
+    width: 100%;
+    max-width: 1100px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* لوحة التحكم المزدوجة للتفعيلات الفورية */
+.exploit-grid-main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .exploit-grid-main { grid-template-columns: 1fr; }
+}
+
+.action-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* تمييز صندوق جولد هن بالذهب */
+.goldhen-box { border: 2px solid var(--gold-accent); box-shadow: 0 0 20px rgba(255, 215, 0, 0.15); }
+/* تمييز صندوق بي إس فري بالبنفسجي النيوني */
+.psfree-box { border: 2px solid var(--psfree-purple); box-shadow: 0 0 20px rgba(157, 78, 221, 0.15); }
+
+.action-card:hover {
+    transform: translateY(-5px);
+}
+.goldhen-box:hover { box-shadow: 0 0 30px rgba(255, 215, 0, 0.3); }
+.psfree-box:hover { box-shadow: 0 0 30px rgba(157, 78, 221, 0.3); }
+
+.action-card h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 10px; }
+.goldhen-box h3 { color: var(--gold-accent); }
+.psfree-box h3 { color: #b5179e; text-shadow: 0 0 10px var(--psfree-purple); }
+
+.badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    background: rgba(255,255,255,0.05);
+}
+.goldhen-box .badge { color: var(--gold-accent); border: 1px solid rgba(255,215,0,0.3); }
+.psfree-box .badge { color: #e0aaff; border: 1px solid rgba(157,78,221,0.3); }
+
+/* أزرار التفعيل الفاخرة */
+.btn-exploit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    font-size: 1.6rem;
+    font-weight: 900;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 320px;
+}
+
+.btn-gh-style {
+    background: linear-gradient(45deg, var(--gold-accent), #ffa500);
+    color: #000;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+.btn-psf-style {
+    background: linear-gradient(45deg, #7b2cbf, #b5179e);
+    color: #fff;
+    box-shadow: 0 0 20px rgba(157, 78, 221, 0.4);
+}
+
+.btn-exploit:hover { transform: scale(1.04); }
+.btn-gh-style:hover { box-shadow: 0 0 35px rgba(255, 215, 0, 0.6); }
+.btn-psf-style:hover { box-shadow: 0 0 35px #b5179e; }
+
+.arrow { font-size: 1.8rem; animation: pointLeft 0.6s infinite alternate; }
+@keyframes pointLeft { from { transform: translateX(0); } to { transform: translateX(-10px); } }
+
+/* ألواح السوفت وير المدعومة */
+.console-panel {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 30px;
+}
+
+.panel-title { font-size: 1.7rem; font-weight: 900; margin-bottom: 15px; text-align: center; }
+.panel-title span { color: var(--border-glow); text-shadow: 0 0 8px var(--border-glow); }
+
+.fw-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(95px, 1fr));
+    gap: 12px;
+    list-style: none;
+    margin-top: 15px;
+}
+
+.fw-btn {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 14px 5px;
+    text-align: center;
+    border-radius: 12px;
+    font-weight: 700;
+    color: #e2e8f0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.fw-btn:hover {
+    background: var(--ps-blue);
+    color: #fff;
+    border-color: var(--border-glow);
+    box-shadow: 0 0 15px var(--ps-blue);
+    transform: translateY(-3px);
+}
+
+/* شاشة التحميل المنبثقة الفخمة */
+.overlay-loader {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(4, 7, 15, 0.99);
+    z-index: 10000;
+    justify-content: center; align-items: center;
+    flex-direction: column; gap: 25px;
+}
+
+.spinner-ring {
+    width: 80px; height: 80px;
+    border: 6px solid rgba(0, 240, 255, 0.03);
+    border-top: 6px solid var(--border-glow);
+    border-bottom: 6px solid var(--psfree-purple);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+footer {
+    margin-top: auto; width: 100%; text-align: center; padding: 25px;
+    color: var(--text-muted); font-size: 0.9rem; backdrop-filter: blur(5px);
+}
