@@ -1,8 +1,46 @@
-CACHE MANIFEST
-# HIGH TECH PS Offline Cache Version 1.0
+const CACHE_NAME = 'hightech-ps-cache-v2';
+const assetsToCache = [
+    './',
+    './index.html',
+    './banner.png' //
+];
 
-CACHE:
-index.html
+// تثبيت الـ Service Worker 
+self.addEventListener('install', (event) => {
+    event.waitUntil(
+        caches.open(CACHE_NAME)
+            .then((cache) => {
+                console.log('Opened cache');
+                return cache.addAll(assetsToCache);
+            })
+            .then(() => self.skipWaiting())
+    );
+});
 
-NETWORK:
-*
+// 
+self.addEventListener('activate', (event) => {
+    event.waitUntil(
+        caches.keys().then((cacheNames) => {
+            return Promise.all(
+                cacheNames.map((cacheName) => {
+                    if (cacheName !== CACHE_NAME) {
+                        return caches.delete(cacheName);
+                    }
+                })
+            );
+        }).then(() => self.clients.claim())
+    );
+});
+
+// جلب الملفات من الكاش مباشرة عند قطع الإنترنت (Offline Mode)
+self.addEventListener('fetch', (event) => {
+    event.respondWith(
+        caches.match(event.request)
+            .then((response) => {
+                if (response) {
+                    return response; // 
+                }
+                return fetch(event.request); // 
+            })
+    );
+});
