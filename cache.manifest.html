@@ -32,7 +32,7 @@ self.addEventListener('activate', (event) => {
     );
 });
 
-// جلب الملفات من الكاش مباشرة عند قطع الإنترنت (Offline Mode)
+(Offline Mode)
 self.addEventListener('fetch', (event) => {
     event.respondWith(
         caches.match(event.request)
