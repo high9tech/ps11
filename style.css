@@ -22,9 +22,9 @@
 }
 
 body {
-    /* كود جلب خلفية ألعاب مجمعة حديثة عالية الجودة مع دمج الفلتر الداكن الاحترافي */
+    /* دمج الفلتر الداكن الاحترافي مع الصورة الجديدة بصيغة PNG */
     background: linear-gradient(var(--bg-overlay), var(--bg-overlay)), 
-                url('https://unsplash.com') no-repeat center center fixed;
+                url('games-bg.png') no-repeat center center fixed;
     background-size: cover;
     color: var(--text-white);
     min-height: 100vh;
@@ -33,7 +33,6 @@ body {
     align-items: center;
     overflow-x: hidden;
     padding: 20px;
-}
 
 /* الهيدر المتوهج */
 header {
